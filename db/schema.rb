@@ -1404,27 +1404,23 @@ ActiveRecord::Schema.define(version: 2022_02_02_214204) do
     t.index ["role_type", "role_id"], name: "index_users_on_role_type_and_role_id", unique: true
   end
 
-<<<<<<< HEAD
-=======
+  create_table "verification_attempt_notes", force: :cascade do |t|
+    t.text "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.bigint "verification_attempt_id"
+    t.index ["user_id"], name: "index_verification_attempt_notes_on_user_id"
+    t.index ["verification_attempt_id"], name: "index_verification_attempt_notes_on_verification_attempt_id"
+  end
+
   create_table "verification_attempts", force: :cascade do |t|
     t.bigint "client_id"
     t.datetime "created_at", precision: 6, null: false
-    t.text "note_body"
     t.datetime "updated_at", precision: 6, null: false
     t.index ["client_id"], name: "index_verification_attempts_on_client_id"
   end
 
-  create_table "vita_partner_states", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.float "routing_fraction", default: 0.0, null: false
-    t.string "state", null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "vita_partner_id", null: false
-    t.index ["state", "vita_partner_id"], name: "index_vita_partner_states_on_state_and_vita_partner_id", unique: true
-    t.index ["vita_partner_id"], name: "index_vita_partner_states_on_vita_partner_id"
-  end
-
->>>>>>> aef928cec (update migration for verification-attempts)
   create_table "vita_partner_zip_codes", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
