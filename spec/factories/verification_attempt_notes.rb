@@ -16,6 +16,7 @@
 #
 FactoryBot.define do
   factory :verification_attempt_note do
-    
+    verification_attempt
+    body {"this is a note"}
   end
 end
