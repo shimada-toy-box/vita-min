@@ -6,16 +6,12 @@
         <h1 class="spacing-above-0"><%= @verification_attempt.client.legal_name %></h1>
         <ul class="item-15m">
           <% @fraud_indicators.each do |indicator| %>
-            <% if indicator == "duplicate_bank_account" %>
-              <li><%= indicator.humanize %> <strong><%="(1 additional account)" %></strong></li> <%# How to get actual count instead of hard coding 1 %>
-            <% else %>
-              <li><%= indicator.humanize %></li>
-            <% end %>
-          <%end %>
+            <li><%= indicator.humanize %></li>
+          <% end %>
         </ul>
 
         <div class="grid-flex contained">
-          <div class="item-15r"><%= image_tag transient_storage_url(@verification_attempt.selfie.blob) %></div>
+          <div class="item-40l"><%= image_tag transient_storage_url(@verification_attempt.selfie.blob) %></div>
           <div><%= image_tag transient_storage_url(@verification_attempt.photo_identification.blob) %></div>
         </div>
 
