@@ -16,7 +16,11 @@
 #
 FactoryBot.define do
   factory :verification_attempt_note do
-    verification_attempt
-    body {"this is a note"}
+    body { "this is a note" }
+    user { create :admin_user }
+
+    trait :with_verification_attempt do
+      verification_attempt
+    end
   end
 end

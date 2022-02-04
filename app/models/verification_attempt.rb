@@ -13,6 +13,7 @@
 #
 class VerificationAttempt < ApplicationRecord
   belongs_to :client
+  has_one :intake, through: :client
   has_one_attached :selfie
   has_one_attached :photo_identification
   has_many :verification_attempt_notes

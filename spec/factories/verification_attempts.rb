@@ -13,8 +13,8 @@
 #
 FactoryBot.define do
   factory :verification_attempt do
-    client
-
+    client { create :client_with_ctc_intake_and_return }
+    verification_attempt_notes { build_list :verification_attempt_note, 1 }
     after(:build) do |verification_attempt|
       verification_attempt.selfie.attach(
         io: File.open(Rails.root.join("spec", "fixtures", "files", "picture_id.jpg")),
@@ -26,6 +26,10 @@ FactoryBot.define do
         filename: 'test.jpg',
         content_type: 'image/jpeg'
       )
+    end
+    after(:create) do |verification_attempt|
+      create :ctc_intake, :filled_out_ctc, :with_bank_account
+      create :bank_account, intake: verification_attempt.intake
     end
   end
 end
