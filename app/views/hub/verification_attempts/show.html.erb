@@ -4,9 +4,13 @@
       <div>
         <%= link_to "##{@verification_attempt.client.id}", hub_client_path(id: @verification_attempt.client.id) , target: :_blank %>
         <h1 class="spacing-above-0"><%= @verification_attempt.client.legal_name %></h1>
-        <ul>
+        <ul class="item-15m">
           <% @fraud_indicators.each do |indicator| %>
-            <li><%= indicator.humanize %></li>
+            <% if indicator == "duplicate_bank_account" %>
+              <li><%= indicator.humanize %> <strong><%="(1 additional account)" %></strong></li> <%# How to get actual count instead of hard coding 1 %>
+            <% else %>
+              <li><%= indicator.humanize %></li>
+            <% end %>
           <%end %>
         </ul>
 

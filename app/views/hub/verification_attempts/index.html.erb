@@ -2,7 +2,25 @@
   <div class="slab">
     <div class="grid">
       <div class="grid__item width-one-whole">
-        <h1><%=  "#{@attempt_count} clients to be verified" %></h1>
+        <h1><%=  "#{@attempt_count} clients to be verified" %></h1> <%#I think we need to modify this heading slightly since the count represents
+                                                                          the number of attempts and not necessarily the number of clients %>
+        <table class="index-table">
+          <thead class="index-table__head">
+          <tr class="index-table__row">
+              <th scope="col" class="index-table__header">Name</th>
+              <th scope="col" class="index-table__header">Created at</th>
+              <th scope="col" class="index-table__header">Time Submitted</th>  <%# Not sure how time submitted is different from created_at in this context. %>
+          </tr>
+          </thead>
+          <tbody>
+            <% VerificationAttempt.find_each do|attempt| %>
+          <tr>
+            <td><%= attempt.client.legal_name %></td>
+            <td><%= link_to timestamp(attempt.client.created_at),hub_verification_attempt_path(id: attempt.client.id) %></td> <%# The link is only working for the first 6 entries in this table %>
+          </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
