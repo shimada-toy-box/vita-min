@@ -6,6 +6,7 @@ module Portal
 
     def home
       @ask_for_answers = ask_for_answers?
+      @itin_filer = current_intake.triage&.id_type_need_help?
 
       @current_step = current_intake.current_step if ask_for_answers?
       @tax_returns = []
