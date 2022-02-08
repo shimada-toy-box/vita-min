@@ -4,14 +4,14 @@
       <div>
         <%= link_to "##{@verification_attempt.client.id}", hub_client_path(id: @verification_attempt.client.id) , target: :_blank %>
         <h1 class="spacing-above-0"><%= @verification_attempt.client.legal_name %></h1>
-        <ul class="item-15m">
+        <ul>
           <% @fraud_indicators.each do |indicator| %>
             <li><%= indicator.humanize %></li>
-          <% end %>
+          <%end %>
         </ul>
 
         <div class="grid-flex contained">
-          <div class="item-40l"><%= image_tag transient_storage_url(@verification_attempt.selfie.blob) %></div>
+          <div class="item-15r"><%= image_tag transient_storage_url(@verification_attempt.selfie.blob) %></div>
           <div><%= image_tag transient_storage_url(@verification_attempt.photo_identification.blob) %></div>
         </div>
 
