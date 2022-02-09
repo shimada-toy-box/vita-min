@@ -6,7 +6,7 @@ module Portal
 
     def home
       @ask_for_answers = ask_for_answers?
-      @itin_filer = current_intake.triage&.id_type_need_help?
+      @itin_filer = current_intake.triage&.id_type_need_itin_help?
       @current_step = current_intake.current_step if ask_for_answers?
       @document_count = current_client.documents.where(uploaded_by: current_client).count
       @tax_returns = show_tax_returns? ? current_client.tax_returns.order(year: :desc) : []
