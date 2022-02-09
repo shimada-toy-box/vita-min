@@ -377,10 +377,10 @@ RSpec.feature "a client on their portal" do
       visit portal_root_path
       expect(page).to have_text("Welcome back Martha!")
       expect(page).to have_text("2021 Tax Return")
-      expect(page).to have_text("ITIN Operation") # Part of the IRS's ITINs by mail address
+      expect(page).to have_text("Austin Service Center") # Part of the IRS's ITINs by mail address
       within "#tax-year-2021" do
-        expect(page).to have_link "Download Form 1040"
-        expect(page).to have_link "Download Form W7"
+        expect(page).to have_link "View or download form 1040"
+        expect(page).to have_link "View or download form W7"
       end
     end
   end

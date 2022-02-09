@@ -1445,6 +1445,10 @@ en:
             preparing_return: Your tax team is preparing the return
             waiting_for_qr: Your tax team is waiting to discuss your final %{year} return with you
             waiting_for_review: Your tax team is waiting for an initial review with you
+      itin_instructions:
+        how_you_can_complete: "Here’s how you can complete your return:"
+        download_your_documents: "Download your W-7, tax return, original proof of identity, and original foreign status documents."
+        submit_by_mail: "Submit to the IRS by mail:"
     still_needs_helps:
       chat_later:
         help_text: If you have any additional documents that you need to upload, please use the button below.

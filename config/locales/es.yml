@@ -1398,6 +1398,10 @@ es:
             preparing_return: Su equipo de impuestos está preparando la declaración
             waiting_for_qr: Nuestro equipo de impuestos está esperando para hablar sobre su declaración final de %{year} con usted
             waiting_for_review: Su equipo de impuestos espera una primera revisión con usted
+      itin_instructions:
+        how_you_can_complete: "Así es como puede completar su devolución:"
+        download_your_documents: "Descargue su W-7, declaración de impuestos, prueba de identidad original y documentos originales de estado extranjero."
+        submit_by_mail: "Enviar al IRS por correo:"
     still_needs_helps:
       chat_later:
         help_text: Si tiene algún documento adicional que necesita subir, por favor use el botón abajo.
