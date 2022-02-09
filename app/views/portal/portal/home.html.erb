@@ -3,6 +3,9 @@
 <% content_for :card do %>
   <h1 class="h2"><%= t(".title", name: current_client.intake.preferred_name) %></h1>
 
+  <%= render "itin_instructions" %>
+  <!-- make Answered initial tax questions go away-->
+
   <div class="tax-return-status">
     <% unless @ask_for_answers %>
       <%= render "progress_state" do %>
@@ -119,7 +122,6 @@
         <% if state == :file_mailed && @itin_filer %>
           <%= render "document_links", label: t("portal.portal.home.document_link.view_1040", year: tax_return.year), documents: tax_return.completed_1040s %>
           <%= render "document_links", label: t("portal.portal.home.document_link.view_w7", year: tax_return.year), documents: tax_return.w7s %>
-          <%= render "itin_instructions" %>
         <% else %>
           <%= render "document_links", label: t("portal.portal.home.document_link.view_signed_8879", year: tax_return.year), documents: tax_return.signed_8879s %>
           <%= render "document_links", label: t("portal.portal.home.document_link.view_unsigned_8879", year: tax_return.year), documents: tax_return.unsigned_8879s %>
