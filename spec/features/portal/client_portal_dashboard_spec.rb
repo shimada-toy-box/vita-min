@@ -363,7 +363,8 @@ RSpec.feature "a client on their portal" do
   end
 
   context "with an ITIN client ready to mail their forms" do
-    let(:client) { create :client, intake: (create :intake, preferred_name: "Martha", primary_first_name: "Martha", primary_last_name: "Mango", filing_joint: "yes", triage: build(:triage, id_type: "need_help")) }
+    let(:used_itin_certifying_acceptance_agent) { false }
+    let(:client) { create :client, intake: (create :intake, preferred_name: "Martha", primary_first_name: "Martha", primary_last_name: "Mango", filing_joint: "yes", used_itin_certifying_acceptance_agent: used_itin_certifying_acceptance_agent, triage: build(:triage, id_type: "need_itin_help")) }
     let(:tax_return) { create :tax_return, :file_mailed, year: TaxReturn.current_tax_year, client: client }
 
     before do
@@ -381,6 +382,23 @@ RSpec.feature "a client on their portal" do
       within "#tax-year-2021" do
         expect(page).to have_link "View or download form 1040"
         expect(page).to have_link "View or download form W7"
+      end
+    end
+
+    context "when the client was help by a certified acceptance agent" do
+      let(:used_itin_certifying_acceptance_agent) { true }
+
+      it "includes additional instructions" do
+        visit portal_root_path
+        expect(page).to have_text("Welcome back Martha!")
+        expect(page).to have_text("2021 Tax Return")
+        expect(page).to have_text("Austin Service Center") # Part of the IRS's ITINs by mail address
+        expect(page).to have_text("Drop off in person")
+        within "#tax-year-2021" do
+          expect(page).to have_link "View or download form 1040"
+          expect(page).to have_link "View or download form W7"
+          expect(page).to have_link "View or download form W7(COA)"
+        end
       end
     end
   end

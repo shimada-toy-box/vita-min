@@ -13,8 +13,9 @@
 #
 # Indexes
 #
-#  index_btru_on_assigned_user_id         (assigned_user_id)
-#  index_btru_on_tax_return_selection_id  (tax_return_selection_id)
+#  index_btru_on_assigned_user_id          (assigned_user_id)
+#  index_btru_on_tax_return_selection_id   (tax_return_selection_id)
+#  index_bulk_tax_return_updates_on_state  (state)
 #
 # Foreign Keys
 #

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_08_220255) do
+ActiveRecord::Schema.define(version: 2022_02_10_000102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -1055,6 +1055,7 @@ ActiveRecord::Schema.define(version: 2022_02_08_220255) do
     t.string "type"
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "use_primary_name_for_name_control", default: false
+    t.boolean "used_itin_certifying_acceptance_agent", default: false, null: false
     t.boolean "viewed_at_capacity", default: false
     t.string "visitor_id"
     t.bigint "vita_partner_id"
