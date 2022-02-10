@@ -41,9 +41,22 @@ describe Hub::VerificationAttemptsController, type: :controller do
         allow(fraud_double).to receive(:hold_indicators).and_return ["duplicate_bank_account"]
       end
 
-      it "should render gracefully" do
-        get :show, params: { id: verification_attempt.id }
-        expect(response).to be_ok
+      context "rendering the page" do
+        render_views
+
+        it "should render gracefully" do
+          get :show, params: { id: verification_attempt.id }
+          expect(response).to be_ok
+        end
+
+        context "when the client has not uploaded verification documents" do
+          let(:verification_attempt) { VerificationAttempt.create(client: create(:client)) }
+
+          it "should render gracefully" do
+            get :show , params: {id: verification_attempt.id}
+            expect(response).to be_ok
+          end
+        end
       end
 
       it "defines @verification_attempt as the VerificationAttempt object that matches the ID passed through the params" do
